@@ -1,1 +1,1 @@
-# dysteno.github.io
+# 별걸 다 하는 속기사무소
