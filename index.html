@@ -38,13 +38,11 @@
     function sendMail() {
       const name = document.getElementById("name").value.trim();
       const contact = document.getElementById("contactInput").value.trim();
-      const date = document.getElementById("date").value;
       const message = document.getElementById("message").value;
 
       emailjs.send("service_ek3cxkv", "template_pj3ga78", {
         from_name: name,
         contact: contact,
-        date: date,
         message: message
       }).then(
         () => alert("메일이 성공적으로 전송되었습니다!"),
