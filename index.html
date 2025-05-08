@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>별걸 다 하는 속기사무소</title>
+  
+  <!-- ✅ SEO 메타태그 시작 -->
+  <meta name="description" content="전문 1급 속기사들이 제공하는 녹취록, 회의록, 문자 통역, 방송 프리뷰 서비스. 철저한 기밀 보장과 정확한 결과를 약속드립니다.">
+  <meta name="keywords" content="속기사무소, 녹취록, 문자통역, 회의록, 방송 프리뷰, 속기 서비스, 속기, 자막 제작">
+  <meta name="author" content="별걸 다 하는 속기사무소">
+  <meta name="robots" content="index, follow">
+  <!-- 네이버 웹마스터 등록 코드 -->
+  <meta name="naver-site-verification" content="여기에_코드_입력" />
+  <!-- ✅ SEO 메타태그 끝 -->
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("Rf0ufR-4pRr0PfEFD");
+    })();
+
+    function sendMail() {
+      const name = document.getElementById("name").value.trim();
+      const contact = document.getElementById("contactInput").value.trim();
+      const date = document.getElementById("date").value;
+      const message = document.getElementById("message").value;
+
+      emailjs.send("service_ek3cxkv", "template_pj3ga78", {
+        from_name: name,
+        contact: contact,
+        date: date,
+        message: message
+      }).then(
+        () => alert("메일이 성공적으로 전송되었습니다!"),
+        (error) => alert("메일 전송 실패: " + error.text)
+      );
+    }
+
+    function showSection(id) {
+      const sections = document.querySelectorAll("section");
+      sections.forEach(section => {
+        section.style.display = "none";
+        section.classList.remove("fade-in");
+      });
+    
+      const target = document.getElementById(id);
+      if (target) {
+        target.style.display = "block";
+        target.classList.add("fade-in");
+    
+        if (id === 'contact') {
+          document.getElementById("date").value = new Date().toISOString().split("T")[0];
+        }
+        if (id === 'history') {
+          showTab("tab-Text interpretation");
+        }
+      }
+    }
+
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll(".history-tab");
+      tabs.forEach(tab => {
+        tab.style.display = "none";
+        tab.classList.remove("slide-in");
+      });
+      const activeTab = document.getElementById(tabId);
+      if (activeTab) {
+        activeTab.style.display = "block";
+        activeTab.classList.add("slide-in");
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      // 섹션을 초기에는 모두 숨김 (어떤 section도 표시하지 않음)
+      const sections = document.querySelectorAll("section");
+      sections.forEach(section => section.style.display = "none");
+
+      // 히스토리 탭 초기화
+      showTab("tab-Text interpretation");
+    });
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 0 80px 0;
+      overflow-x: hidden;
+      background: url('별걸다하는속기사무소-05.jpg') no-repeat center/cover;
+      background-attachment: fixed;
+      color: white;
+    }
+    header {
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 22px;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    nav {
+      background-color: rgba(73, 80, 87, 0.8);
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    section {
+      display: none;
+      padding: 20px;
+      max-width: 800px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      color: black;
+      border-radius: 12px;
+    }
+    section h2 {
+      border-bottom: 2px solid #495057;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      color: #343a40;
+    }
+    .tab-buttons button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #6c757d;
+      color: white;
+      cursor: pointer;
+    }
+    .tab-buttons button:hover {
+      background: #495057;
+    }
+    .history-tab {
+      display: none;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(52, 58, 64, 0.8);
+      color: #aab6c1ff;
+      text-align: center;
+      padding: 10px;
+      z-index: 100;
+    }
+    #contact {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    #contact input,
+    #contact textarea {
+      width: 96%;
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      align-self: center;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #495057, #343a40);
+      color: white;
+      font-size: 17px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+	#about, #services, #history, #contact {
+      display: none;
+      height: 595px;
+      overflow-y: auto;
+    }
+	
+	/* fade-in 애니메이션 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease;
+    }
+	
+	/* 슬라이드 인 애니메이션 (이력사항 탭용) */
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .slide-in {
+      animation: slideIn 0.4s ease;
+    }
+
+  </style>
+</head>
+<body>
+  <header onclick="document.querySelectorAll('section').forEach(s => s.style.display = 'none');" style="cursor: pointer;">
+  <span>별걸 다 하는 속기사무소<br>doing everything</span>
+  </header>
+
+  <nav>
+    <a onclick="showSection('about')">회사 소개</a>
+    <a onclick="showSection('services')">서비스</a>
+    <a onclick="showSection('history')">이력사항</a>
+    <a onclick="showSection('contact')">문의하기</a>
+  </nav>
+
+  <section id="about">
+    <h2>회사 소개</h2>
+    <p>전문 1급 속기사들로 구성된 팀으로 다양한 분야의 녹취록을 정확하고 신속하게 제공해 드리고 있습니다. <br>
+	   저희 사무소는 법률, 회의, 학술, 인터뷰 등 모든 녹취 및 기록 분야에서 고객의 요구를 충족할 수 있는 최고의 서비스를 목표로 하고 있습니다.</p>
+	<img src="사업자등록_자격취득.jpg" alt="사업자등록증 및 자격증" style="max-width: 100%; border-radius: 10px; margin-top: 20px;" />
+  </section>
+
+  <section id="services">
+    <h2>서비스</h2>
+    <ul>
+      <li><b>녹취록 작성</b><br>&nbsp;- 현장 및 통화 녹음된 자료를 활용해 정밀한 녹취록을 작성해 드립니다.</li><br>
+      <li><b>회의록 작성</b><br>&nbsp;- 재개발·재건축, 주주총회, 이사회 등 고객의 요청에 따라 번문하고 교정하여 제공합니다.</li><br>
+      <li><b>문자 통역 서비스</b><br>&nbsp;- 자체 개발한 전문 속기 프로그램을 통해 2인의 속기사가 실시간 녹취를 진행하여 신속하고 정확한 자료를 제공합니다.</li><br>
+	  <li><b>프리뷰 제작</b><br>&nbsp;- 방송 및 유튜브 프리뷰를 작업해드릡니다.</li><br><br><br>
+	  <!-- <li><b>자격증 교육</b><br>&nbsp;- 자격증 취득에 필요한 노하우 및 교육에 대한 정보를 제공합니다.</li><br> -->
+    </ul>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;** 데이터 보안 및 기밀 유지 **<br>&nbsp;- 모든 녹취 자료는 엄격한 보안 절차를 통해 관리되며, 고객의 기밀 사항을 철저히 준수합니다.</p>
+  </section>
+
+  <section id="history">
+    <h2>이력사항</h2>
+    <div class="tab-buttons">
+      <button onclick="showTab('tab-Text interpretation')">문자 통역</button>
+      <button onclick="showTab('tab-business trip')">출장 속기</button>
+      <button onclick="showTab('tab-preview')">방송 프리뷰</button>
+      <button onclick="showTab('tab-etc')">기타</button>
+    </div>
+
+    <div id="tab-Text interpretation" class="history-tab">
+      <ul>
+	      <li>가치봄 영화제 개·폐막식</li><br>
+		  <li>전국 농아인의 날 농아인대회</li><br>
+		  <li>남북농문화교류와 수어표준화 세미나</li><br>
+		  <li>서초장애인가족지원센터 금융교육</li><br>
+		  <li>농아인협회 수어의 날 행사</li><br>
+		  <li>나이프 페인팅 클래스</li><br>
+		  <li>청각장애인 대상 취업 박람회</li><br>
+		  <li>한복진흥원 세미나</li><br>
+		  <li>한국사능력평가 강의</li><br>
+		  <li>직장생활 예정 교육</li><br>
+		  <li>KBS, SBS, MBC, KTV, TV조선, 채널A, MBN, 국회TV, 각종 스포츠 및 홈쇼핑 등</li>
+	  </ul>
+    </div>
+    <div id="tab-business trip" class="history-tab">
+      <ul>
+		  <li>의료기술재평가 인터뷰 녹취</li><br>
+		  <li>전통모자 학술 세미나 녹취</li><br>
+		  <li>문화체육관광부 양성평등 정책 포럼</li><br>
+		  <li>인하대학교 회의록</li><br>
+		  <li>LG U+ 주주총회</li><br>
+		  <li>오스테드 선주 협의회 회의록</li><br>
+		  <li>굴업풍력 협의회 회의록</li><br>
+		  <li>재개발조합사업</li><br>
+		  <li>재건축조합사업</li><br>
+		  <li>가로주택정비사업</li><br>
+		  <li>구의회 임시회, 정례회 회의록 등</li>
+	  </ul>
+    </div>
+    <div id="tab-preview" class="history-tab">
+      <ul>
+	      <li>SBS : 동상이몽, 동물농장, 골목식당, 맛남의 광장 등</li><br>
+		  <li>KBS : 시사기획창, 살림하는 남자들 시즌2</li><br>
+		  <li>KBS JoY : 연애의 참견</li><br>
+		  <li>MBC : 전지적 참견 시점</li><br>
+		  <li>tvN : 온앤오프, 백패커1, 2, 벌거벗은 세계사</li><br>
+		  <li>채널A : 금쪽같은 내 새끼</li><br>
+		  <li>Mnet : 걸스플래닛</li><br>
+		  <li>넷플릭스 : 흑백요리사</li><br>
+		  <li>JTBC : 한문철의 블랙박스 리뷰</li><br>
+		  <li>ENA : 찐팬구역, 지구마블 세계여행2</li><br>
+		  <li>TV조선 : 조선의 사랑꾼, 4인용 식탁</li><br>
+		  <li>채널S : 잡동산</li><br>
+		  <li>채널 뷰 : 내 생애 값진 선택</li><br>
+		  <li>뉴스타파 등</li>
+	  </ul>
+    </div>
+    <div id="tab-etc" class="history-tab">
+      <ul>
+	      <li>한글속기 자격증 교육 강사</li><br>
+		  <li>속기 봉사</li><br>
+		  <li>유튜브 자막 타이핑</li><br>
+		  <li>법정 증거물 녹취록 1,000건 이상</li><br>
+		  <li>자막 방송국 8년 이상 재직</li><br>
+		  <li>역사서 편찬 인터뷰 속기(폴리텍대학, SHL, 세스코, 마팔하이테코 등)</li>
+	  </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>문의하기</h2>
+    <label for="name">성명(기관명):</label><br><br>
+    <input type="text" id="name" required /><br><br>
+    <label for="contactInput">연락처:</label><br><br>
+    <input type="text" id="contactInput" required /><br><br>
+    <label for="message">문의 내용:</label><br><br>
+    <textarea id="message" rows="8" required></textarea><br><br>
+    <div style="display: flex; justify-content: center;">
+       <button onclick="sendMail()">보내기</button>
+    </div>
+  </section>
+
+  <footer>
+    전화 | 010.4020.0979 / 010.6686.3561 &nbsp; 이메일 | kkbs7360@naver.com &nbsp; 사업자등록번호 | 841-41-00520<br>
+    &copy; 2025 별걸 다 하는 속기사무소. All rights reserved.
+  </footer>
+</body>
+</html>
