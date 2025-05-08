@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://kkbs7360.github.io/sitemap.xml
+Sitemap: https://dysteno.github.io/sitemap.xml
