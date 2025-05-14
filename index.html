@@ -40,24 +40,10 @@
       emailjs.init("Rf0ufR-4pRr0PfEFD");
     })();
 
-    function toggleCustomDomain() {
-      const domainSelect = document.getElementById("emailDomain");
-      const customInput = document.getElementById("customDomain");
-      if (domainSelect.value === "custom") {
-        customInput.style.display = "block";
-      } else {
-        customInput.style.display = "none";
-      }
-    }
-
     function sendMail() {
       const name = document.getElementById("name").value.trim();
       const contact = document.getElementById("contactInput").value.trim();
-      const emailPrefix = document.getElementById("emailPrefix").value.trim();
-      const domainSelect = document.getElementById("emailDomain").value;
-      const customDomain = document.getElementById("customDomain").value.trim();
-      const emailDomain = (domainSelect === "custom") ? customDomain : domainSelect;
-      const email = `${emailPrefix}@${emailDomain}`;
+      const email = document.getElementById("emailInput").value.trim();
       const message = document.getElementById("message").value;
     
       emailjs.send("service_ek3cxkv", "template_pj3ga78", {
@@ -66,8 +52,8 @@
         email: email,
         message: message
       }).then(
-        () => alert("메일이 성공적으로 전송되었습니다!"),
-        (error) => alert("메일 전송 실패: " + error.text)
+        () => alert("확인 후 연락드리겠습니다. :)"),
+        (error) => alert("전송 실패: " + error.text)
       );
     }
 
@@ -388,23 +374,14 @@
         <input type="text" id="contactInput" required />
       </div>
     </div><br>
+    <label for="emailInput">이메일:</label><br>
+    <input type="email" id="emailInput" required /><br><br>
   
-    <label for="emailPrefix">이메일:</label><br>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-      <input type="text" id="emailPrefix" placeholder="example" style="flex: 1;" required />
-      <span>@</span>
-      <select id="emailDomain" onchange="toggleCustomDomain()" style="flex: 1;">
-        <option value="naver.com">naver.com</option>
-        <option value="gmail.com">gmail.com</option>
-        <option value="daum.net">daum.net</option>
-        <option value="custom">직접 입력</option>
-      </select>
-      <input type="text" id="customDomain" placeholder="도메인 입력" style="display: none; flex: 1;" />
-    </div><br>
     <label for="message">문의 내용:</label><br><br>
     <textarea id="message" rows="5" required></textarea><br><br>
+  
     <div style="display: flex; justify-content: center;">
-       <button onclick="sendMail()">보내기</button>
+      <button onclick="sendMail()">보내기</button>
     </div>
   </section>
 
