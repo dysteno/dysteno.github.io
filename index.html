@@ -24,14 +24,14 @@
   <meta property="og:description" content="속기부터 자막, 문자통역까지! 어떤 상황에서도 믿을 수 있는 속기 서비스를 제공합니다." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dysteno.github.io/" />
-  <meta property="og:image" content="https://dysteno.github.io/별걸다하는속기사무소-05.jpg" />
+  <meta property="og:image" content="https://dysteno.github.io/images/별걸다하는속기사무소-05.jpg" />
   <meta property="og:site_name" content="별걸 다 하는 속기사무소" />
   
   <!-- Twitter 카드 (트위터 공유 시 최적화) -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="별걸 다 하는 속기사무소" />
   <meta name="twitter:description" content="속기부터 자막, 문자통역까지! 어떤 상황에서도 믿을 수 있는 속기 서비스를 제공합니다." />
-  <meta name="twitter:image" content="https://dysteno.github.io/별걸다하는속기사무소-05.jpg" />
+  <meta name="twitter:image" content="https://dysteno.github.io/images/별걸다하는속기사무소-05.jpg" />
 
   <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -260,6 +260,26 @@
         width: 95vw;
       }
     }
+    .social-fixed-bar {
+      position: fixed;
+      bottom: 100px; /* footer와 겹치지 않도록 조정 */
+      right: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 8px 12px;
+      display: flex;
+      gap: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+    }
+    .social-fixed-bar a img {
+      width: 30px;
+      height: 30px;
+      transition: transform 0.2s ease;
+    }
+    .social-fixed-bar a:hover img {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
@@ -393,5 +413,19 @@
     전화 | 010.4020.0979 / 010.6686.3561 &nbsp; 이메일 | kkbs7360@naver.com &nbsp; 사업자등록번호 | 841-41-00520<br>
     &copy; 2025 별걸 다 하는 속기사무소. All rights reserved.
   </footer>
+
+  <!-- 소셜 아이콘 고정 바 -->
+  <div class="social-fixed-bar">
+    <a href="https://blog.naver.com/kkbs7360" target="_blank" title="블로그">
+      <img src="https://dysteno.github.io/images/블로그.png" alt="블로그" />
+    </a>
+    <a href="https://www.instagram.com/doing_steno/" target="_blank" title="인스타그램">
+      <img src="https://dysteno.github.io/images/인스타그램.png" alt="인스타그램" />
+    </a>
+    <a href="https://open.kakao.com/o/sSfahLjg" target="_blank" title="오픈카톡">
+      <img src="https://dysteno.github.io/images/카카오톡.png" alt="오픈카카오" />
+    </a>
+  </div>
+	
 </body>
 </html>
