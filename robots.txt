@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://dysteno.github.io/sitemap.xml
+Sitemap: https://별걸다하는속기사무소.com/sitemap.xml
