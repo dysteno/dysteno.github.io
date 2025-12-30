@@ -1,511 +1,250 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>별걸 다 하는 속기사무소</title>
-
-  <!-- Favicon (브라우저 탭 아이콘) -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-  <!-- Open Graph 이미지 (카카오톡, 페이스북 등 공유용) -->
-  <meta property="og:image" content="https://별걸다하는속기사무소.com/og-image.jpg" />
-  <meta name="twitter:image" content="https://별걸다하는속기사무소.com/og-image.jpg" />
-
-  <!-- ✅ SEO 메타태그 시작 -->
-  <meta name="description" content="전문 1급 속기사들이 제공하는 녹취록, 회의록, 문자 통역, 방송 프리뷰 서비스. 철저한 기밀 보장과 정확한 결과를 약속드립니다.">
-  <meta name="keywords" content="속기사무소, 녹취록, 문자통역, 회의록, 방송 프리뷰, 속기 서비스, 속기, 자막 제작, 
-	                         재개발, 재건축, 재개발재건축, 가로주택정비사업, 가로주택, 속기록, 주주총회, 속기란, 속기 비용, 
-	                         속기사 자격증, 1급 속기사, 회의 속기, 재판 속기, 자막 속기, 학술대회 속기, 속기 아르바이트, 
-	                         서울 속기사무소, 강남 회의 속기, 서울 회의 속기, 별걸, 별걸다, 별걸다하, 별걸다하는, 별걸다하는속, 
-                                 별결다하는속기, 별걸다하는속기사, 별걸다하는속기사무, 별걸다하는속기사무소, 별다속, 별걸 다, 별걸 다 하, 
-                                 별걸 다 하는, 별걸 다 하는 속, 별걸 다 하는 속기, 별걸 다 하는 속기사, 별걸 다 하는 속기사무">
-  <meta name="author" content="별걸 다 하는 속기사무소">
-  <meta name="robots" content="index, follow">
-  <!-- 네이버 웹마스터 등록 코드 -->
-  <meta name="naver-site-verification" content="9f58b034d266c4ac9cf66235d08dc982786aafa9" />
-  <!-- ✅ SEO 메타태그 끝 -->
-	
-  <!-- Open Graph (SNS, 카카오, 네이버 미리보기용) -->
-  <meta property="og:title" content="별걸 다 하는 속기사무소" />
-  <meta property="og:description" content="속기부터 자막, 문자통역까지! 어떤 상황에서도 믿을 수 있는 속기 서비스를 제공합니다." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://별걸다하는속기사무소.com" />
-  <meta property="og:image" content="https://별걸다하는속기사무소.com/og-image-optimized.jpg" />
-  <meta property="og:site_name" content="별걸 다 하는 속기사무소" />
-  
-  <!-- Twitter 카드 (트위터 공유 시 최적화) -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="별걸 다 하는 속기사무소" />
-  <meta name="twitter:description" content="속기부터 자막, 문자통역까지! 어떤 상황에서도 믿을 수 있는 속기 서비스를 제공합니다." />
-  <meta name="twitter:image" content="https://별걸다하는속기사무소.com/og-image-optimized.jpg" />
-
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <script>
-    (function () {
-      emailjs.init("Rf0ufR-4pRr0PfEFD");
-    })();
-
-    function sendMail() {
-      const name = document.getElementById("name").value.trim();
-      const contact = document.getElementById("contactInput").value.trim();
-      const email = document.getElementById("emailInput").value.trim();
-      const message = document.getElementById("message").value;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>별걸 다 하는 속기사무소 - 전문 녹취 및 속기 서비스</title>
     
-      emailjs.send("service_ek3cxkv", "template_pj3ga78", {
-        from_name: name,
-        contact: contact,
-        email: email,
-        message: message
-      }).then(
-        () => alert("확인 후 연락드리겠습니다. :)"),
-        (error) => alert("전송 실패: " + error.text)
-      );
-    }
+    <meta name="description" content="전문 1급 속기사들이 제공하는 녹취록, 회의록, 문자 통역, 방송 프리뷰 서비스. 철저한 기밀 보장과 정확한 결과를 약속드립니다.">
+    <meta name="keywords" content="속기사무소, 녹취록, 문자통역, 회의록, 방송 프리뷰, 속기 서비스, 속기, 자막 제작, 재개발, 재건축, 재개발재건축, 가로주택정비사업, 가로주택, 속기록, 주주총회">
+    <meta name="author" content="별걸 다 하는 속기사무소">
+    <meta name="robots" content="index, follow">
+    
+    <meta name="naver-site-verification" content="navere4bb79a0008253d645f1acf96f44bc15" />
+    
+    <meta property="og:title" content="별걸 다 하는 속기사무소">
+    <meta property="og:description" content="속기부터 자막, 문자통역까지! 믿을 수 있는 서비스를 제공합니다.">
+    <meta property="og:image" content="https://dysteno.github.io/images/별걸다하는속기사무소-05.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dysteno.github.io/">
 
-    function showSection(id) {
-      const sections = document.querySelectorAll("section");
-      sections.forEach(section => {
-        section.style.display = "none";
-        section.classList.remove("fade-in");
-      });
-    
-      const target = document.getElementById(id);
-      if (target) {
-        target.style.display = "block";
-        target.classList.add("fade-in");
-    
-        if (id === 'contact') {
-          document.getElementById("date").value = new Date().toISOString().split("T")[0];
-        }
-        if (id === 'history') {
-          showTab("tab-Text interpretation");
-        }
-      }
-    }
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    function showTab(tabId) {
-      const tabs = document.querySelectorAll(".history-tab");
-      tabs.forEach(tab => {
-        tab.style.display = "none";
-        tab.classList.remove("slide-in");
-      });
-      const activeTab = document.getElementById(tabId);
-      if (activeTab) {
-        activeTab.style.display = "block";
-        activeTab.classList.add("slide-in");
-      }
-    }
+    <link rel="stylesheet" href="./css/style.css">
 
-    window.addEventListener("DOMContentLoaded", () => {
-      // 섹션을 초기에는 모두 숨김 (어떤 section도 표시하지 않음)
-      const sections = document.querySelectorAll("section");
-      sections.forEach(section => section.style.display = "none");
-
-      // 히스토리 탭 초기화
-      showTab("tab-Text interpretation");
-    });
-  </script>
-
-  <script>
-    // 팝업 부분
-    function setCookie(name, value, days) {
-      const d = new Date();
-      d.setTime(d.getTime() + (days*24*60*60*1000));
-      document.cookie = name + "=" + value + ";expires=" + d.toUTCString() + ";path=/";
-    }
-  
-    function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      return parts.length === 2 ? parts.pop().split(';').shift() : "";
-    }
-  
-    function closePromoModal() {
-      const dontShow = document.getElementById("dontShowToday").checked;
-      if (dontShow) {
-        setCookie("hidePromoPopup", "yes", 1);
-      }
-      document.getElementById("promoModal").style.display = "none";
-    }
-  
-    window.addEventListener("DOMContentLoaded", () => {
-      if (!getCookie("hidePromoPopup")) {
-        document.getElementById("promoModal").style.display = "flex";
-      }
-    });
-  </script>
-	
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0 0 60px 0;
-      overflow-x: hidden;
-      background: url('https://dysteno.github.io/images/별걸다하는속기사무소-05.jpg') no-repeat center/cover;
-      background-attachment: fixed;
-      color: white;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-    header {
-      text-align: center;
-      padding: 10px 20px;
-      font-size: 22px;
-      font-weight: bold;
-      background: rgba(0, 0, 0, 0.6);
-    }
-    nav {
-      background-color: rgba(73, 80, 87, 0.8);
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 18px;
-      cursor: pointer;
-    }
-    section {
-      display: none;
-      padding: 20px;
-      max-width: 800px;
-      margin: 20px auto;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-      color: black;
-      border-radius: 12px;
-      box-sizing: border-box;
-      overflow: auto;
-    }
-    section h2 {
-      border-bottom: 2px solid #495057;
-      padding-bottom: 10px;
-      margin-bottom: 25px;
-      color: #343a40;
-    }
-    .tab-buttons button {
-      padding: 10px 20px;
-      margin: 5px;
-      border: none;
-      border-radius: 5px;
-      background: #6c757d;
-      color: white;
-      cursor: pointer;
-    }
-    .tab-buttons button:hover {
-      background: #495057;
-    }
-    .history-tab {
-      display: none;
-    }
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      background-color: rgba(52, 58, 64, 0.8);
-      color: #aab6c1ff;
-      text-align: center;
-      padding: 10px;
-      z-index: 100;
-      font-size: 14px;
-    }
-    #contact {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    #contact input,
-    #contact textarea {
-      width: 96%;
-      padding: 14px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-    #name, #contactInput {
-	  width: 92% !important ;
-	}
-    button {
-      align-self: center;
-      padding: 12px 30px;
-      background: linear-gradient(135deg, #495057, #343a40);
-      color: white;
-      font-size: 17px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-    }
-    #about, #services, #history, #contact {
-      display: none;
-      height: 595px;
-      overflow-y: auto;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fade-in {
-      animation: fadeIn 0.5s ease;
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    .slide-in {
-      animation: slideIn 0.4s ease;
-    }
-    @media screen and (max-width: 768px) {
-      footer {
-        font-size: 12px;
-        padding: 8px;
-      }
-      nav a {
-        font-size: 14px;
-        margin: 0 10px;
-      }
-      section {
-        width: 95vw;
-      }
-    }
-    .social-fixed-bar {
-      position: fixed;
-      bottom: 100px; /* footer와 겹치지 않도록 조정 */
-      right: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      padding: 8px 12px;
-      display: flex;
-      gap: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      z-index: 9999;
-    }
-    .social-fixed-bar a img {
-      width: 30px;
-      height: 30px;
-      transition: transform 0.2s ease;
-    }
-    .social-fixed-bar a:hover img {
-      transform: scale(1.1);
-    }
-
-    /* 모달 팝업 스타일 */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-color: rgba(0, 0, 0, 0.6);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .modal-content {
-      border-radius: 10px;
-      overflow: hidden;
-      width: 100%;
-      max-width: 476px; /* 첨부 이미지에 맞춤 */
-      background-color: transparent;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      animation: fadeIn 0.3s ease-in-out;
-    }
-    
-    .promo-image {
-      width: 100%;
-      display: block;
-    }
-    
-    .modal-footer {
-      background-color: #000;
-      color: #fff;
-      font-size: 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 16px;
-      font-family: sans-serif;
-    }
-    
-    .modal-footer input[type="checkbox"] {
-      transform: scale(1.1);
-    }
-    
-    .modal-footer button {
-      background-color: #444;
-      color: #fff;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-  </style>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 </head>
 <body>
-  <header onclick="document.querySelectorAll('section').forEach(s => s.style.display = 'none');" style="cursor: pointer;">
-  <span>별걸 다 하는 속기사무소<br>doing everything</span>
-  </header>
 
-  <nav>
-    <a onclick="showSection('about')">회사 소개</a>
-    <a onclick="showSection('services')">서비스</a>
-    <a onclick="showSection('history')">이력사항</a>
-    <a onclick="showSection('contact')">문의하기</a>
-  </nav>
+    <header>
+        <div class="logo">
+            <a href="#">
+                별걸 다 하는 속기사무소
+                <span class="sub">Doing Everything Steno Office</span>
+            </a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">회사 소개</a></li>
+                <li><a href="#services">서비스</a></li>
+                <li><a href="#history">이력사항</a></li>
+                <li><a href="#contact">문의하기</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section id="about">
-    <h2>회사 소개</h2>
-    <p>전문 1급 속기사들로 구성된 팀으로 다양한 분야의 녹취록을 정확하고 신속하게 제공해 드리고 있습니다. <br>
-	   저희 사무소는 법률, 회의, 학술, 인터뷰 등 모든 녹취 및 기록 분야에서 고객의 요구를 충족할 수 있는 최고의 서비스를 목표로 하고 있습니다.</p>
-	<img src="https://dysteno.github.io/images/사업자등록_자격취득.jpg" alt="사업자등록증 및 자격증" style="max-width: 100%; border-radius: 10px; margin-top: 20px;" />
-  </section>
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>기록의 가치를 더하다</h1>
+            <p>정확한 속기, 신속한 결과, 철저한 보안을 약속드립니다.</p>
+            <a href="#contact" class="btn-primary">무료 견적 문의</a>
+        </div>
+    </section>
 
-  <section id="services">
-    <h2>서비스</h2>
-    <ul>
-      <li><b>녹취록 작성</b><br>&nbsp;- 현장 및 통화 녹음된 자료를 활용해 정밀한 녹취록을 작성해 드립니다.</li><br>
-      <li><b>회의록 작성</b><br>&nbsp;- 재개발·재건축, 주주총회, 이사회 등 고객의 요청에 따라 번문하고 교정하여 제공합니다.</li><br>
-      <li><b>문자 통역 서비스</b><br>&nbsp;- 자체 개발한 전문 속기 프로그램을 통해 2인의 속기사가 실시간 녹취를 진행하여 신속하고 정확한 자료를 제공합니다.</li><br>
-	  <li><b>프리뷰 제작</b><br>&nbsp;- 방송 및 유튜브 프리뷰를 작업해드릡니다.</li><br><br><br>
-	  <!-- <li><b>자격증 교육</b><br>&nbsp;- 자격증 취득에 필요한 노하우 및 교육에 대한 정보를 제공합니다.</li><br> -->
-    </ul>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;** 데이터 보안 및 기밀 유지 **<br>&nbsp;- 모든 녹취 자료는 엄격한 보안 절차를 통해 관리되며, 고객의 기밀 사항을 철저히 준수합니다.</p>
-  </section>
+    <section id="about">
+        <h2 class="section-title">회사 소개</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h3>최고의 전문가들이 함께합니다.</h3>
+                <br>
+                <p>
+                    <strong>별걸 다 하는 속기사무소</strong>는 국가공인 1급 속기사들로 구성된 전문 팀입니다.
+                    법률, 회의, 학술, 인터뷰 등 다양한 분야의 기록을 가장 정확하고 신속하게 제공합니다.
+                </p>
+                <p>
+                    단순히 말을 글로 옮기는 것을 넘어, 현장의 분위기와 맥락까지 담아내는 고품질의 서비스를 지향합니다.
+                    고객님의 소중한 기록, 믿고 맡길 수 있는 파트너가 되겠습니다.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="./images/사업자등록_자격취득.jpg" alt="사업자등록증 및 자격증">
+            </div>
+        </div>
+    </section>
 
-  <section id="history">
-    <h2>이력사항</h2>
-    <div class="tab-buttons">
-      <button onclick="showTab('tab-Text interpretation')">문자 통역</button>
-      <button onclick="showTab('tab-business trip')">출장 속기</button>
-      <button onclick="showTab('tab-preview')">방송 프리뷰</button>
-      <button onclick="showTab('tab-etc')">기타</button>
+    <section id="services" class="services">
+        <h2 class="section-title">제공 서비스</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                <h3>녹취록 작성</h3>
+                <p>현장 녹음, 통화 녹음 등 다양한 음성 자료를 법적 효력이 있는 정밀한 녹취록으로 작성해 드립니다.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-users"></i></div>
+                <h3>회의록 작성</h3>
+                <p>주주총회, 이사회, 재개발/재건축 회의 등 공적 회의의 발언 내용을 정확하게 기록하고 문서화합니다.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-closed-captioning"></i></div>
+                <h3>문자 통역</h3>
+                <p>청각장애인을 위한 실시간 문자 통역 서비스를 자체 개발 프로그램을 통해 제공합니다.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-tv"></i></div>
+                <h3>방송 프리뷰</h3>
+                <p>방송 및 유튜브 콘텐츠 제작을 위한 프리뷰, 자막 작업을 신속하게 지원합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="history">
+        <h2 class="section-title">주요 이력</h2>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="tab-text">문자 통역</button>
+            <button class="tab-btn" data-tab="tab-trip">출장 속기</button>
+            <button class="tab-btn" data-tab="tab-preview">방송 프리뷰</button>
+            <button class="tab-btn" data-tab="tab-etc">기타 활동</button>
+        </div>
+
+        <div id="tab-text" class="tab-content active">
+            <ul class="history-list">
+                <li>가치봄 영화제 개·폐막식 문자통역</li>
+                <li>전국 농아인의 날 농아인대회</li>
+                <li>남북농문화교류와 수어표준화 세미나</li>
+                <li>서초장애인가족지원센터 금융교육</li>
+                <li>농아인협회 수어의 날 행사</li>
+                <li>나이프 페인팅 클래스</li>
+                <li>청각장애인 대상 취업 박람회</li>
+                <li>한복진흥원 세미나</li>
+                <li>한국사능력평가 강의</li>
+                <li>KBS, SBS, MBC 등 주요 방송사 문자통역</li>
+            </ul>
+        </div>
+
+        <div id="tab-trip" class="tab-content">
+            <ul class="history-list">
+                <li>의료기술재평가 인터뷰 녹취</li>
+                <li>전통모자 학술 세미나 녹취</li>
+                <li>문화체육관광부 양성평등 정책 포럼</li>
+                <li>인하대학교 회의록</li>
+                <li>LG U+ 주주총회</li>
+                <li>오스테드 선주 협의회 회의록</li>
+                <li>굴업풍력 협의회 회의록</li>
+                <li>재건축/재개발 조합 총회 속기</li>
+                <li>구의회 임시회 및 정례회 회의록</li>
+            </ul>
+        </div>
+
+        <div id="tab-preview" class="tab-content">
+            <ul class="history-list">
+                <li>SBS: 동상이몽, 동물농장, 골목식당 등</li>
+                <li>KBS: 시사기획창, 살림하는 남자들</li>
+                <li>MBC: 전지적 참견 시점</li>
+                <li>tvN: 온앤오프, 백패커, 벌거벗은 세계사</li>
+                <li>Netflix: 흑백요리사</li>
+                <li>Channel A: 금쪽같은 내 새끼</li>
+                <li>JTBC: 한문철의 블랙박스 리뷰</li>
+                <li>ENA, TV조선, Mnet 등 다수 프로그램 작업</li>
+            </ul>
+        </div>
+
+        <div id="tab-etc" class="tab-content">
+            <ul class="history-list">
+                <li>한글속기 자격증 교육 강사</li>
+                <li>재능기부 속기 봉사 활동</li>
+                <li>유튜브 자막 타이핑 서비스</li>
+                <li>법정 증거물 녹취록 1,000건 이상 작성</li>
+                <li>자막 방송국 8년 이상 전문 경력</li>
+                <li>역사서 편찬 인터뷰 속기 (폴리텍대학 등)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact" style="background-color: var(--bg-color);">
+        <h2 class="section-title">문의하기</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-item">
+                    <h4><i class="fas fa-phone-alt"></i> 전화문의</h4>
+                    <p>010-4020-0979<br>010-6686-3561</p>
+                </div>
+                <div class="info-item">
+                    <h4><i class="fas fa-envelope"></i> 이메일</h4>
+                    <p>kkbs7360@naver.com</p>
+                </div>
+                <div class="info-item">
+                    <h4><i class="fas fa-clock"></i> 상담시간</h4>
+                    <p>평일 09:00 - 18:00<br>(긴급 건은 언제든 문의주세요)</p>
+                </div>
+                <div class="info-item">
+                    <h4><i class="fas fa-shield-alt"></i> 보안원칙</h4>
+                    <p>의뢰하신 모든 자료는 철저한 보안 절차를 통해 관리되며, 작업 후 즉시 파기됩니다.</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm" onsubmit="sendMail(event)">
+                    <div class="input-group">
+                        <label for="name">성명 / 기관명</label>
+                        <input type="text" id="name" required placeholder="이름 또는 업체명을 입력해주세요">
+                    </div>
+                    <div class="input-group">
+                        <label for="contactInput">연락처</label>
+                        <input type="text" id="contactInput" required placeholder="010-0000-0000">
+                    </div>
+                    <div class="input-group">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" required placeholder="example@email.com">
+                    </div>
+                    <div class="input-group">
+                        <label for="message">문의 내용</label>
+                        <textarea id="message" rows="5" required placeholder="문의하실 내용을 자유롭게 적어주세요"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">문의 메일 발송</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            상호: 별걸 다 하는 속기사무소 | 대표: 김별 | 사업자등록번호: 841-41-00520<br>
+            전화: 010-4020-0979 | 이메일: kkbs7360@naver.com<br>
+            &copy; 2025 별걸 다 하는 속기사무소. All rights reserved.
+        </p>
+    </footer>
+
+    <div class="social-bar">
+        <a href="https://blog.naver.com/kkbs7360" target="_blank" class="social-icon" title="블로그">
+            <img src="./images/블로그.png" alt="Naver Blog">
+        </a>
+        <a href="https://www.instagram.com/doing_steno/" target="_blank" class="social-icon" title="인스타그램">
+            <img src="./images/인스타그램.png" alt="Instagram">
+        </a>
+        <a href="https://open.kakao.com/o/sSfahLjg" target="_blank" class="social-icon" title="오픈카톡">
+            <img src="./images/카카오톡.png" alt="KakaoTalk">
+        </a>
     </div>
 
-    <div id="tab-Text interpretation" class="history-tab">
-      <h3>[문자 통역]</h3>
-      <ul>
-	<li>가치봄 영화제 개·폐막식</li><br>
-	<li>전국 농아인의 날 농아인대회</li><br>
-	<li>남북농문화교류와 수어표준화 세미나</li><br>
-	<li>서초장애인가족지원센터 금융교육</li><br>
-	<li>농아인협회 수어의 날 행사</li><br>
-	<li>나이프 페인팅 클래스</li><br>
-	<li>청각장애인 대상 취업 박람회</li><br>
-	<li>한복진흥원 세미나</li><br>
-	<li>한국사능력평가 강의</li><br>
-	<li>직장생활 예정 교육</li><br>
-	<li>KBS, SBS, MBC, KTV, TV조선, 채널A, MBN, 국회TV, 각종 스포츠 및 홈쇼핑 등</li>
-      </ul>
+    <div id="promoModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="./images/팝업이미지.png" alt="프로모션 팝업">
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn close-day" onclick="closeForToday()">오늘 하루 보지 않기</button>
+                <button class="modal-btn" onclick="closeModal()">닫기</button>
+            </div>
+        </div>
     </div>
-    <div id="tab-business trip" class="history-tab">
-      <h3>[출장 속기]</h3>
-      <ul>
-	<li>의료기술재평가 인터뷰 녹취</li><br>
-	<li>전통모자 학술 세미나 녹취</li><br>
-	<li>문화체육관광부 양성평등 정책 포럼</li><br>
-	<li>인하대학교 회의록</li><br>
-	<li>LG U+ 주주총회</li><br>
-	<li>오스테드 선주 협의회 회의록</li><br>
-	<li>굴업풍력 협의회 회의록</li><br>
-	<li>재개발조합사업</li><br>
-	<li>재건축조합사업</li><br>
-	<li>가로주택정비사업</li><br>
-	<li>구의회 임시회, 정례회 회의록 등</li>
-      </ul>
-    </div>
-    <div id="tab-preview" class="history-tab">
-      <h3>[방송 프리뷰]</h3>
-      <ul>
-	<li>SBS : 동상이몽, 동물농장, 골목식당, 맛남의 광장 등</li><br>
-	<li>KBS : 시사기획창, 살림하는 남자들 시즌2</li><br>
-	<li>KBS JoY : 연애의 참견</li><br>
-	<li>MBC : 전지적 참견 시점</li><br>
-	<li>tvN : 온앤오프, 백패커1, 2, 벌거벗은 세계사</li><br>
-	<li>채널A : 금쪽같은 내 새끼</li><br>
-	<li>Mnet : 걸스플래닛</li><br>
-	<li>넷플릭스 : 흑백요리사</li><br>
-	<li>JTBC : 한문철의 블랙박스 리뷰</li><br>
-	<li>ENA : 찐팬구역, 지구마블 세계여행2</li><br>
-	<li>TV조선 : 조선의 사랑꾼, 4인용 식탁</li><br>
-	<li>채널S : 잡동산</li><br>
-	<li>채널 뷰 : 내 생애 값진 선택</li><br>
-	<li>뉴스타파 등</li>
-      </ul>
-    </div>
-    <div id="tab-etc" class="history-tab">
-      <h3>[기타]</h3>
-      <ul>
-	<li>한글속기 자격증 교육 강사</li><br>
-	<li>속기 봉사</li><br>
-	<li>유튜브 자막 타이핑</li><br>
-	<li>법정 증거물 녹취록 1,000건 이상</li><br>
-	<li>자막 방송국 8년 이상 재직</li><br>
-	<li>역사서 편찬 인터뷰 속기(폴리텍대학, SHL, 세스코, 마팔하이테코 등)</li>
-      </ul>
-    </div>
-  </section>
 
-  <section id="contact">
-    <h2>문의하기</h2>
-    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <div style="flex: 1;">
-        <label for="name">성명(기관명):</label><br>
-        <input type="text" id="name" required />
-      </div>
-      <div style="flex: 1;">
-        <label for="contactInput">연락처:</label><br>
-        <input type="text" id="contactInput" required />
-      </div>
-    </div><br>
-    <label for="emailInput">이메일:</label><br>
-    <input type="email" id="emailInput" required /><br><br>
-  
-    <label for="message">문의 내용:</label><br><br>
-    <textarea id="message" rows="5" required></textarea><br><br>
-  
-    <div style="display: flex; justify-content: center;">
-      <button onclick="sendMail()">보내기</button>
-    </div>
-  </section>
-
-  <footer>
-    전화 | 010.4020.0979 / 010.6686.3561 &nbsp; 이메일 | kkbs7360@naver.com &nbsp; 사업자등록번호 | 841-41-00520<br>
-    &copy; 2025 별걸 다 하는 속기사무소. All rights reserved.
-  </footer>
-
-  <!-- 소셜 아이콘 고정 바 -->
-  <div class="social-fixed-bar">
-    <a href="https://blog.naver.com/kkbs7360" target="_blank" title="블로그">
-      <img src="https://dysteno.github.io/images/블로그.png" alt="블로그" />
-    </a>
-    <a href="https://www.instagram.com/doing_steno/" target="_blank" title="인스타그램">
-      <img src="https://dysteno.github.io/images/인스타그램.png" alt="인스타그램" />
-    </a>
-    <a href="https://open.kakao.com/o/sSfahLjg" target="_blank" title="오픈카톡">
-      <img src="https://dysteno.github.io/images/카카오톡.png" alt="오픈카카오" />
-    </a>
-  </div>
-
-  <!-- 할인 이벤트 모달 팝업 -->
-  <div id="promoModal" class="modal-overlay">
-    <div class="modal-content">
-      <img src="https://dysteno.github.io/images/팝업이미지.png" alt="제작비 할인 이벤트" class="promo-image">
-      
-      <div class="modal-footer">
-        <label><input type="checkbox" id="dontShowToday"> 오늘하루 창을 열지 않음</label>
-        <button onclick="closePromoModal()">창닫기</button>
-      </div>
-    </div>
-  </div>
+    <script src="./js/main.js" defer></script>
 </body>
 </html>
