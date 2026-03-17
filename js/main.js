@@ -21,46 +21,52 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollEffects();
 });
 
-/* --- Modal Popup Logic --- */
-function initModal() {
-    const promoModal = document.getElementById('promoModal');
-    const feeModal = document.getElementById('feeModal');
+/* --- Modal Popup Logic (한 오버레이에 두 카드 나란히) --- */
+function getPopupsEls() {
+    return {
+        overlay: document.getElementById('popupsOverlay'),
+        promoCard: document.getElementById('promoCard'),
+        feeCard: document.getElementById('feeCard')
+    };
+}
 
-    // 둘 다 한 번에 표시 (각각 쿠키 확인)
-    setTimeout(() => {
-        if (promoModal && getCookie('hidePopup') !== 'yes') {
-            promoModal.classList.add('open');
-        }
-        if (feeModal && getCookie('hideFeePopup') !== 'yes') {
-            feeModal.classList.add('open');
-        }
-    }, 500);
+function hideOverlayIfBothHidden() {
+    const { overlay, promoCard, feeCard } = getPopupsEls();
+    if (!overlay || !promoCard || !feeCard) return;
+    if (promoCard.classList.contains('popup-card-hidden') && feeCard.classList.contains('popup-card-hidden')) {
+        overlay.classList.remove('open');
+    }
+}
+
+function initModal() {
+    const { overlay, promoCard, feeCard } = getPopupsEls();
+    if (!overlay || !promoCard || !feeCard) return;
+
+    const showPromo = getCookie('hidePopup') !== 'yes';
+    const showFee = getCookie('hideFeePopup') !== 'yes';
+
+    if (!showPromo) promoCard.classList.add('popup-card-hidden');
+    if (!showFee) feeCard.classList.add('popup-card-hidden');
+    if (!showPromo && !showFee) return;
+
+    setTimeout(() => overlay.classList.add('open'), 500);
 }
 
 function closeModal() {
-    const modal = document.getElementById('promoModal');
-    if (modal) modal.classList.remove('open');
+    const { overlay, promoCard } = getPopupsEls();
+    if (promoCard) promoCard.classList.add('popup-card-hidden');
+    hideOverlayIfBothHidden();
 }
 
 function closeForToday() {
-    // Set cookie for 1 day
     document.cookie = 'hidePopup=yes;path=/;max-age=86400';
     closeModal();
 }
 
-/* --- 요금표 팝업 --- */
-function tryShowFeeModal() {
-    const feeModal = document.getElementById('feeModal');
-    if (!feeModal) return;
-    if (getCookie('hideFeePopup') === 'yes') return;
-    setTimeout(() => {
-        feeModal.classList.add('open');
-    }, 300);
-}
-
 function closeFeeModal() {
-    const modal = document.getElementById('feeModal');
-    if (modal) modal.classList.remove('open');
+    const { feeCard } = getPopupsEls();
+    if (feeCard) feeCard.classList.add('popup-card-hidden');
+    hideOverlayIfBothHidden();
 }
 
 function closeFeeForToday() {

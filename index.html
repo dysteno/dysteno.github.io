@@ -237,26 +237,26 @@
         </a>
     </div>
 
-    <div id="promoModal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="./images/팝업이미지.png" alt="프로모션 팝업">
+    <!-- 두 팝업을 한 오버레이 안에 나란히 표시 -->
+    <div id="popupsOverlay" class="modal-overlay popups-overlay">
+        <div class="popups-wrapper">
+            <div id="promoCard" class="modal-content popup-card">
+                <div class="modal-body">
+                    <img src="./images/팝업이미지.png" alt="프로모션 팝업">
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn close-day" onclick="closeForToday()">오늘 하루 보지 않기</button>
+                    <button class="modal-btn" onclick="closeModal()">닫기</button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button class="modal-btn close-day" onclick="closeForToday()">오늘 하루 보지 않기</button>
-                <button class="modal-btn" onclick="closeModal()">닫기</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="feeModal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="./images/요금표.png" alt="요금표">
-            </div>
-            <div class="modal-footer">
-                <button class="modal-btn close-day" onclick="closeFeeForToday()">오늘 하루 보지 않기</button>
-                <button class="modal-btn" onclick="closeFeeModal()">닫기</button>
+            <div id="feeCard" class="modal-content popup-card">
+                <div class="modal-body">
+                    <img src="./images/요금표.png" alt="요금표">
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn close-day" onclick="closeFeeForToday()">오늘 하루 보지 않기</button>
+                    <button class="modal-btn" onclick="closeFeeModal()">닫기</button>
+                </div>
             </div>
         </div>
     </div>

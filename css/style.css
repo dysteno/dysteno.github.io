@@ -485,6 +485,36 @@ footer {
   pointer-events: auto;
 }
 
+/* 두 팝업 나란히: 한 오버레이 안에 두 카드 */
+.popups-overlay .popups-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 960px;
+}
+
+.popups-overlay .popup-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: var(--shadow-md);
+  transform: translateY(20px);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.popups-overlay.open .popup-card {
+  transform: translateY(0);
+}
+
+.popups-overlay .popup-card.popup-card-hidden {
+  display: none;
+}
+
 .modal-content {
   background: var(--white);
   border-radius: 12px;
@@ -586,5 +616,17 @@ footer {
   
   .contact-container {
     flex-direction: column;
+  }
+
+  /* 모바일: 두 팝업 세로로 쌓기 */
+  .popups-overlay .popups-wrapper {
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 100%;
+  }
+
+  .popups-overlay .popup-card {
+    max-width: 90%;
+    flex-shrink: 0;
   }
 }
