@@ -500,11 +500,30 @@ footer {
   background: var(--white);
   border-radius: 12px;
   overflow: hidden;
-  max-width: 420px;
-  width: 100%;
+  width: 380px;
+  min-width: 380px;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
   box-shadow: var(--shadow-md);
   transform: translateY(20px);
   transition: transform 0.3s, opacity 0.3s;
+}
+
+.popups-overlay .popup-card .modal-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  background: #f8fafc;
+}
+
+.popups-overlay .popup-card .modal-body img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .popups-overlay.open .popup-card {
@@ -626,7 +645,10 @@ footer {
   }
 
   .popups-overlay .popup-card {
+    width: 100%;
+    min-width: unset;
     max-width: 90%;
+    min-height: 420px;
     flex-shrink: 0;
   }
 }
