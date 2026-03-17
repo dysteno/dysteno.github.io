@@ -23,25 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* --- Modal Popup Logic --- */
 function initModal() {
-    // index.html의 ID "promoModal"과 매칭
-    const modal = document.getElementById('promoModal');
-    if (!modal) return;
+    const promoModal = document.getElementById('promoModal');
+    const feeModal = document.getElementById('feeModal');
 
-    const hidePopup = getCookie('hidePopup');
-    if (hidePopup !== 'yes') {
-        setTimeout(() => {
-            modal.classList.add('open');
-        }, 500);
-    } else {
-        // 프로모션을 이미 닫았다면 요금표 팝업만 표시
-        tryShowFeeModal();
-    }
+    // 둘 다 한 번에 표시 (각각 쿠키 확인)
+    setTimeout(() => {
+        if (promoModal && getCookie('hidePopup') !== 'yes') {
+            promoModal.classList.add('open');
+        }
+        if (feeModal && getCookie('hideFeePopup') !== 'yes') {
+            feeModal.classList.add('open');
+        }
+    }, 500);
 }
 
 function closeModal() {
     const modal = document.getElementById('promoModal');
     if (modal) modal.classList.remove('open');
-    tryShowFeeModal();
 }
 
 function closeForToday() {
