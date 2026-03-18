@@ -19,7 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabs();
     initMobileMenu();
     initScrollEffects();
+    initFooterYear();
 });
+
+/* --- 푸터 연도 자동 갱신 --- */
+function initFooterYear() {
+    const el = document.getElementById('footerYear');
+    if (el) el.textContent = new Date().getFullYear();
+}
 
 /* --- Modal Popup Logic (한 오버레이에 두 카드 나란히) --- */
 function getPopupsEls() {
