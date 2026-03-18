@@ -177,7 +177,7 @@ function sendMail(event) {
             document.getElementById('contactForm').reset();
         })
         .catch((error) => {
-            alert("전송 실패: " + JSON.stringify(error));
+            alert("전송에 실패했습니다. 잠시 후 다시 시도해 주시거나, 전화(010-4020-0979) 또는 이메일로 문의해 주세요.");
             console.error('EmailJS Error:', error);
         })
         .finally(() => {

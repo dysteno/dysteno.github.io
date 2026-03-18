@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://별걸다하는속기사무소.com/</loc>
-    <lastmod>2025-05-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://dysteno.github.io/</loc>
   </url>
-
+  <url>
+    <loc>https://dysteno.github.io/#about</loc>
+  </url>
+  <url>
+    <loc>https://dysteno.github.io/#services</loc>
+  </url>
+  <url>
+    <loc>https://dysteno.github.io/#history</loc>
+  </url>
+  <url>
+    <loc>https://dysteno.github.io/#process</loc>
+  </url>
+  <url>
+    <loc>https://dysteno.github.io/#contact</loc>
+  </url>
 </urlset>
