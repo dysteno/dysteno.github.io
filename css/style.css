@@ -500,9 +500,9 @@ footer {
   background: var(--white);
   border-radius: 12px;
   overflow: hidden;
-  width: 380px;
-  min-width: 380px;
-  min-height: 520px;
+  width: 420px;
+  min-width: 420px;
+  min-height: 580px;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-md);
@@ -513,6 +513,9 @@ footer {
 .popups-overlay .popup-card .modal-body {
   flex: 1;
   min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   background: #f8fafc;
 }
@@ -520,7 +523,7 @@ footer {
 .popups-overlay .popup-card .modal-body img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   display: block;
 }
@@ -646,8 +649,8 @@ footer {
   .popups-overlay .popup-card {
     width: 100%;
     min-width: unset;
-    max-width: 90%;
-    min-height: 420px;
+    max-width: 92%;
+    min-height: 480px;
     flex-shrink: 0;
   }
 }
