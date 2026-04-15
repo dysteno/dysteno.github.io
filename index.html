@@ -21,6 +21,7 @@
     <meta property="og:image" content="https://별걸다하는속기사무소.com/images/별걸다하는속기사무소-05.jpg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://별걸다하는속기사무소.com/">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
@@ -31,15 +32,33 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "별걸 다 하는 속기사무소",
-      "alternateName": "Doing Everything Steno Office",
-      "description": "국가공인 1급 속기사 전문 팀. 녹취록·회의록·출장 속기·문자 통역·방송 프리뷰.",
-      "url": "https://별걸다하는속기사무소.com/",
-      "telephone": "+82-10-4020-0979",
-      "email": "kkbs7360@naver.com",
-      "areaServed": { "@type": "Country", "name": "대한민국" },
-      "serviceType": ["녹취록 작성", "회의록 작성", "문자 통역", "방송 프리뷰·자막"]
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://별걸다하는속기사무소.com/#website",
+          "url": "https://별걸다하는속기사무소.com/",
+          "name": "별걸 다 하는 속기사무소",
+          "inLanguage": "ko-KR",
+          "publisher": { "@id": "https://별걸다하는속기사무소.com/#business" }
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://별걸다하는속기사무소.com/#business",
+          "name": "별걸 다 하는 속기사무소",
+          "alternateName": "Doing Everything Steno Office",
+          "description": "국가공인 1급 속기사 전문 팀. 녹취록·회의록·출장 속기·문자 통역·방송 프리뷰.",
+          "url": "https://별걸다하는속기사무소.com/",
+          "image": "https://별걸다하는속기사무소.com/images/별걸다하는속기사무소-05.jpg",
+          "telephone": "+82-10-4020-0979",
+          "email": "kkbs7360@naver.com",
+          "areaServed": { "@type": "Country", "name": "KR" },
+          "serviceType": ["녹취록 작성", "회의록 작성", "문자 통역", "방송 프리뷰·자막"],
+          "sameAs": [
+            "https://blog.naver.com/kkbs7360",
+            "https://www.instagram.com/doing_steno/"
+          ]
+        }
+      ]
     }
     </script>
 
