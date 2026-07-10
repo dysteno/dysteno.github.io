@@ -1,0 +1,28 @@
+# ===== 로컬 전용 파일 (배포 제외) =====
+
+# 에디터/도구 설정
+.claude/
+.cursorrules
+
+# 레거시·실험용 파일
+index - 복사본.html
+index_v2.html
+css/style_v2 copy.css
+js/main_v2 copy.js
+testsprite_tests/
+
+# 참고 자료·원본 소스 (사이트에서 사용 안 함)
+*.pptx
+*.txt
+!robots.txt
+기존*
+별걸다하는속기사무소-01.jpg
+별걸다하는속기사무소 꼬릿말.jpg
+제목 없음.png
+
+# 최적화 전 이미지 원본 보관
+images/_originals/
+
+# OS 잡파일
+Thumbs.db
+Desktop.ini
