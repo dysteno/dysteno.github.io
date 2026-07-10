@@ -1,14 +1,12 @@
 /**
- * Main JavaScript for Rebuilt Website
- * Handles Modal, Tabs, Mobile Menu, and EmailJS
+ * Main JavaScript
+ * Handles Modal, Tabs, Mobile Menu, Scroll Effects, and EmailJS
  */
 
-// Initialize EmailJS
+// Initialize EmailJS (@emailjs/browser v4)
 (function () {
-    // Check if emailjs is loaded
     if (typeof emailjs !== 'undefined') {
-        // 기존 v1 키 유지
-        emailjs.init("Rf0ufR-4pRr0PfEFD");
+        emailjs.init({ publicKey: "Rf0ufR-4pRr0PfEFD" });
     } else {
         console.error("EmailJS not loaded");
     }
@@ -29,6 +27,8 @@ function initFooterYear() {
 }
 
 /* --- Modal Popup Logic (한 오버레이에 두 카드 나란히) --- */
+let lastFocusedBeforePopup = null;
+
 function getPopupsEls() {
     return {
         overlay: document.getElementById('popupsOverlay'),
@@ -42,7 +42,23 @@ function hideOverlayIfBothHidden() {
     if (!overlay || !promoCard || !feeCard) return;
     if (promoCard.classList.contains('popup-card-hidden') && feeCard.classList.contains('popup-card-hidden')) {
         overlay.classList.remove('open');
+        restorePopupFocus();
     }
+}
+
+function restorePopupFocus() {
+    if (lastFocusedBeforePopup && typeof lastFocusedBeforePopup.focus === 'function') {
+        lastFocusedBeforePopup.focus();
+    }
+    lastFocusedBeforePopup = null;
+}
+
+function closeAllPopups() {
+    const { overlay, promoCard, feeCard } = getPopupsEls();
+    if (promoCard) promoCard.classList.add('popup-card-hidden');
+    if (feeCard) feeCard.classList.add('popup-card-hidden');
+    if (overlay) overlay.classList.remove('open');
+    restorePopupFocus();
 }
 
 function initModal() {
@@ -54,13 +70,29 @@ function initModal() {
 
     if (!showPromo) promoCard.classList.add('popup-card-hidden');
     if (!showFee) feeCard.classList.add('popup-card-hidden');
+
+    // ESC 키로 닫기
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('open')) closeAllPopups();
+    });
+
+    // 카드 밖(배경) 클릭으로 닫기
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target.classList.contains('popups-wrapper')) closeAllPopups();
+    });
+
     if (!showPromo && !showFee) return;
 
-    setTimeout(() => overlay.classList.add('open'), 500);
+    setTimeout(() => {
+        lastFocusedBeforePopup = document.activeElement;
+        overlay.classList.add('open');
+        const firstBtn = overlay.querySelector('.popup-card:not(.popup-card-hidden) .modal-btn');
+        if (firstBtn) firstBtn.focus();
+    }, 500);
 }
 
 function closeModal() {
-    const { overlay, promoCard } = getPopupsEls();
+    const { promoCard } = getPopupsEls();
     if (promoCard) promoCard.classList.add('popup-card-hidden');
     hideOverlayIfBothHidden();
 }
@@ -93,25 +125,37 @@ window.closeForToday = closeForToday;
 window.closeFeeModal = closeFeeModal;
 window.closeFeeForToday = closeFeeForToday;
 
-/* --- Tabs Logic --- */
+/* --- Tabs Logic (ARIA + 키보드 방향키 지원) --- */
 function initTabs() {
-    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabBtns = Array.from(document.querySelectorAll('.tab-btn'));
     const tabContents = document.querySelectorAll('.tab-content');
 
     if (tabBtns.length === 0) return;
 
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all
-            tabBtns.forEach(b => b.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
+    function activateTab(btn) {
+        tabBtns.forEach(b => {
+            const isActive = b === btn;
+            b.classList.toggle('active', isActive);
+            b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            b.tabIndex = isActive ? 0 : -1;
+        });
+        tabContents.forEach(c => c.classList.remove('active'));
+        const targetContent = document.getElementById(btn.getAttribute('data-tab'));
+        if (targetContent) targetContent.classList.add('active');
+    }
 
-            // Add active class to clicked
-            btn.classList.add('active');
-            const targetId = btn.getAttribute('data-tab');
-            const targetContent = document.getElementById(targetId);
-            if (targetContent) {
-                targetContent.classList.add('active');
+    tabBtns.forEach((btn, i) => {
+        btn.addEventListener('click', () => activateTab(btn));
+        btn.addEventListener('keydown', (e) => {
+            let idx = null;
+            if (e.key === 'ArrowRight') idx = (i + 1) % tabBtns.length;
+            else if (e.key === 'ArrowLeft') idx = (i - 1 + tabBtns.length) % tabBtns.length;
+            else if (e.key === 'Home') idx = 0;
+            else if (e.key === 'End') idx = tabBtns.length - 1;
+            if (idx !== null) {
+                e.preventDefault();
+                tabBtns[idx].focus();
+                activateTab(tabBtns[idx]);
             }
         });
     });
@@ -122,19 +166,22 @@ function initMobileMenu() {
     const toggle = document.querySelector('.menu-toggle');
     const navUl = document.querySelector('nav ul');
 
-    if (toggle && navUl) {
-        toggle.addEventListener('click', () => {
-            navUl.classList.toggle('show');
-            // Change icon if needed (optional)
-        });
+    if (!toggle || !navUl) return;
 
-        // Close menu when clicking a link
-        navUl.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navUl.classList.remove('show');
-            });
-        });
+    function setMenuOpen(open) {
+        navUl.classList.toggle('show', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
     }
+
+    toggle.addEventListener('click', () => {
+        setMenuOpen(!navUl.classList.contains('show'));
+    });
+
+    // Close menu when clicking a link
+    navUl.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => setMenuOpen(false));
+    });
 }
 
 /* --- Scroll Effects --- */
@@ -156,6 +203,13 @@ function initScrollEffects() {
 function sendMail(event) {
     event.preventDefault(); // Prevent form submission
 
+    // 허니팟: 숨은 필드에 값이 있으면 봇으로 판단하고 전송하지 않음
+    const honeypot = document.getElementById('website');
+    if (honeypot && honeypot.value) {
+        document.getElementById('contactForm').reset();
+        return;
+    }
+
     const btn = document.querySelector('.btn-submit');
     const originalText = btn.innerText;
 
@@ -163,7 +217,6 @@ function sendMail(event) {
     btn.innerText = '전송 중...';
     btn.disabled = true;
 
-    // v1, v2 공통으로 사용하는 ID들
     const templateParams = {
         from_name: document.getElementById('name').value.trim(),
         contact: document.getElementById('contactInput').value.trim(),

@@ -139,6 +139,9 @@ nav a:hover::after {
   font-size: 1.5rem;
   color: var(--white);
   cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 /* Hero Section */
@@ -151,9 +154,14 @@ nav a:hover::after {
   text-align: center;
   color: var(--white);
   margin-bottom: 0;
-  /* ✅ 수정: 이미지가 images 폴더 안에 있다고 가정 */
   background: url('../images/별걸다하는속기사무소-05.jpg') no-repeat center center/cover;
-  background-attachment: fixed;
+}
+
+/* 고정 배경(패럴랙스)은 마우스 환경 데스크톱에서만 — iOS/모바일 렌더링 문제 회피 */
+@media (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  .hero {
+    background-attachment: fixed;
+  }
 }
 
 .hero-overlay {
@@ -746,9 +754,11 @@ footer {
     max-width: 100%;
   }
 
-  /* 모바일: 두 팝업 세로로 쌓기 */
+  /* 모바일: 두 팝업 세로로 쌓기 (nowrap: 열 넘침으로 두 번째 팝업이 화면 밖에 생기는 것 방지) */
   .popups-overlay .popups-wrapper {
     flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
     overflow-y: auto;
     max-height: 100%;
   }
@@ -759,5 +769,84 @@ footer {
     max-width: 92%;
     min-height: 480px;
     flex-shrink: 0;
+  }
+}
+
+/* Skip Link (키보드 사용자용 본문 바로가기) */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 2001;
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 8px 8px;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* 허니팟 필드: 화면 밖으로 숨김 (스팸 봇 감지용) */
+.hp-field {
+  position: absolute !important;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* 개인정보 수집 동의 */
+.consent-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.consent-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+  accent-color: var(--primary-color);
+}
+
+.consent-group a {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+/* 연락처/푸터 링크 */
+.info-item a:hover {
+  color: var(--accent-color);
+}
+
+footer a:hover {
+  color: var(--white);
+}
+
+.footer-link {
+  text-decoration: underline;
+}
+
+/* 모션 최소화 설정 존중 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
