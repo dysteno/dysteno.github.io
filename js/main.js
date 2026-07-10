@@ -3,11 +3,11 @@
  * Handles Modal, Tabs, Mobile Menu, Scroll Effects, and EmailJS
  */
 
-// Initialize EmailJS (@emailjs/browser v4)
+// Initialize EmailJS (@emailjs/browser v4) — 문의 폼이 있는 페이지에서만 필요
 (function () {
     if (typeof emailjs !== 'undefined') {
         emailjs.init({ publicKey: "Rf0ufR-4pRr0PfEFD" });
-    } else {
+    } else if (document.getElementById('contactForm')) {
         console.error("EmailJS not loaded");
     }
 })();
