@@ -18,9 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initScrollEffects();
     initFooterYear();
+    initCareerYears();
     initQuoteCalc();
     initQuotePrefill();
 });
+
+/* --- 방송 자막 경력 연차 자동 갱신 (2017년 시작 기준: 2026년=9년, 매년 1월 1일 +1) --- */
+function initCareerYears() {
+    const years = new Date().getFullYear() - 2017;
+    document.querySelectorAll('.js-bc-years').forEach(el => {
+        el.textContent = years;
+    });
+}
 
 /* --- 푸터 연도 자동 갱신 --- */
 function initFooterYear() {
@@ -28,25 +37,8 @@ function initFooterYear() {
     if (el) el.textContent = new Date().getFullYear();
 }
 
-/* --- Modal Popup Logic (한 오버레이에 두 카드 나란히) --- */
+/* --- Modal Popup Logic (프로모션 팝업) --- */
 let lastFocusedBeforePopup = null;
-
-function getPopupsEls() {
-    return {
-        overlay: document.getElementById('popupsOverlay'),
-        promoCard: document.getElementById('promoCard'),
-        feeCard: document.getElementById('feeCard')
-    };
-}
-
-function hideOverlayIfBothHidden() {
-    const { overlay, promoCard, feeCard } = getPopupsEls();
-    if (!overlay || !promoCard || !feeCard) return;
-    if (promoCard.classList.contains('popup-card-hidden') && feeCard.classList.contains('popup-card-hidden')) {
-        overlay.classList.remove('open');
-        restorePopupFocus();
-    }
-}
 
 function restorePopupFocus() {
     if (lastFocusedBeforePopup && typeof lastFocusedBeforePopup.focus === 'function') {
@@ -55,48 +47,10 @@ function restorePopupFocus() {
     lastFocusedBeforePopup = null;
 }
 
-function closeAllPopups() {
-    const { overlay, promoCard, feeCard } = getPopupsEls();
-    if (promoCard) promoCard.classList.add('popup-card-hidden');
-    if (feeCard) feeCard.classList.add('popup-card-hidden');
+function closeModal() {
+    const overlay = document.getElementById('popupsOverlay');
     if (overlay) overlay.classList.remove('open');
     restorePopupFocus();
-}
-
-function initModal() {
-    const { overlay, promoCard, feeCard } = getPopupsEls();
-    if (!overlay || !promoCard || !feeCard) return;
-
-    const showPromo = getCookie('hidePopup') !== 'yes';
-    const showFee = getCookie('hideFeePopup') !== 'yes';
-
-    if (!showPromo) promoCard.classList.add('popup-card-hidden');
-    if (!showFee) feeCard.classList.add('popup-card-hidden');
-
-    // ESC 키로 닫기
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && overlay.classList.contains('open')) closeAllPopups();
-    });
-
-    // 카드 밖(배경) 클릭으로 닫기
-    overlay.addEventListener('click', (e) => {
-        if (e.target === overlay || e.target.classList.contains('popups-wrapper')) closeAllPopups();
-    });
-
-    if (!showPromo && !showFee) return;
-
-    setTimeout(() => {
-        lastFocusedBeforePopup = document.activeElement;
-        overlay.classList.add('open');
-        const firstBtn = overlay.querySelector('.popup-card:not(.popup-card-hidden) .modal-btn');
-        if (firstBtn) firstBtn.focus();
-    }, 500);
-}
-
-function closeModal() {
-    const { promoCard } = getPopupsEls();
-    if (promoCard) promoCard.classList.add('popup-card-hidden');
-    hideOverlayIfBothHidden();
 }
 
 function closeForToday() {
@@ -104,15 +58,29 @@ function closeForToday() {
     closeModal();
 }
 
-function closeFeeModal() {
-    const { feeCard } = getPopupsEls();
-    if (feeCard) feeCard.classList.add('popup-card-hidden');
-    hideOverlayIfBothHidden();
-}
+function initModal() {
+    const overlay = document.getElementById('popupsOverlay');
+    const promoCard = document.getElementById('promoCard');
+    if (!overlay || !promoCard) return;
 
-function closeFeeForToday() {
-    document.cookie = 'hideFeePopup=yes;path=/;max-age=86400';
-    closeFeeModal();
+    // ESC 키로 닫기
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+    });
+
+    // 카드 밖(배경) 클릭으로 닫기
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target.classList.contains('popups-wrapper')) closeModal();
+    });
+
+    if (getCookie('hidePopup') === 'yes') return;
+
+    setTimeout(() => {
+        lastFocusedBeforePopup = document.activeElement;
+        overlay.classList.add('open');
+        const firstBtn = overlay.querySelector('.modal-btn');
+        if (firstBtn) firstBtn.focus();
+    }, 500);
 }
 
 function getCookie(name) {
@@ -124,8 +92,6 @@ function getCookie(name) {
 // Global scope for HTML onclick access
 window.closeModal = closeModal;
 window.closeForToday = closeForToday;
-window.closeFeeModal = closeFeeModal;
-window.closeFeeForToday = closeFeeForToday;
 
 /* --- Tabs Logic (ARIA + 키보드 방향키 지원) --- */
 function initTabs() {
