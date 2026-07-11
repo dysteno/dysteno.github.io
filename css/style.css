@@ -147,13 +147,14 @@ nav a:hover::after {
 /* Hero Section */
 .hero {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: var(--white);
   margin-bottom: 0;
+  padding: calc(var(--header-height) + 40px) 20px 60px;
   background: url('../images/별걸다하는속기사무소-05.jpg') no-repeat center center/cover;
 }
 
@@ -170,7 +171,7 @@ nav a:hover::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.6) 50%, rgba(15, 23, 42, 0.8) 100%);
   z-index: 1;
 }
 
@@ -217,6 +218,33 @@ nav a:hover::after {
 .btn-primary:hover {
   background-color: transparent;
   color: var(--accent-color);
+}
+
+/* 히어로 신뢰 지표 */
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 3rem;
+  margin-top: 3rem;
+}
+
+.hero-stat {
+  text-align: center;
+  min-width: 110px;
+}
+
+.hero-stat strong {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  line-height: 1.2;
+}
+
+.hero-stat span {
+  font-size: 0.9rem;
+  color: #cbd5e1;
 }
 
 /* Sections Common */
@@ -346,20 +374,37 @@ section {
   display: block;
 }
 
+.history-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+}
+
 .history-list li {
-  padding: 0.8rem 0;
-  border-bottom: 1px solid #f1f5f9;
+  background: var(--bg-color);
+  border: 1px solid #e8edf4;
+  border-radius: 10px;
+  padding: 0.9rem 1rem 0.9rem 2.7rem;
   position: relative;
-  padding-left: 1.5rem;
   color: var(--secondary-color);
+  transition: var(--transition);
 }
 
 .history-list li::before {
-  content: '•';
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
   color: var(--accent-color);
-  font-weight: bold;
   position: absolute;
-  left: 0;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+}
+
+.history-list li:hover {
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-sm);
 }
 
 /* 이용 절차 Section */
@@ -739,6 +784,23 @@ footer {
 
   .hero .hero-tagline {
     font-size: 0.95rem;
+  }
+
+  .hero-stats {
+    gap: 1.25rem 2rem;
+    margin-top: 2.25rem;
+  }
+
+  .hero-stat {
+    min-width: 90px;
+  }
+
+  .hero-stat strong {
+    font-size: 1.4rem;
+  }
+
+  .hero-stat span {
+    font-size: 0.8rem;
   }
   
   .contact-container {
