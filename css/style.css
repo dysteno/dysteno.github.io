@@ -407,6 +407,14 @@ section {
   box-shadow: var(--shadow-sm);
 }
 
+/* 이력 분류 라벨 (분류: 항목, 항목 등 형식) */
+.history-list li strong {
+  display: block;
+  color: var(--primary-color);
+  font-size: 0.92rem;
+  margin-bottom: 0.2rem;
+}
+
 /* 이용 절차 Section */
 .process-section {
   background-color: var(--white);
