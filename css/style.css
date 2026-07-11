@@ -969,6 +969,96 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* 간편 견적 계산기 */
+.quote-calc {
+  max-width: 700px;
+  margin: 3rem auto 0;
+  background: var(--white);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.quote-calc h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.quote-calc-desc {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.quote-calc-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  align-items: flex-end;
+  margin-bottom: 1.25rem;
+}
+
+.quote-type {
+  border: none;
+  padding: 0;
+}
+
+.quote-type legend {
+  font-weight: 600;
+  color: var(--secondary-color);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.quote-type label {
+  margin-right: 1.25rem;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.quote-type input {
+  accent-color: var(--primary-color);
+  margin-right: 0.3rem;
+}
+
+.quote-minutes label {
+  display: block;
+  font-weight: 600;
+  color: var(--secondary-color);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.quote-minutes input {
+  width: 130px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.quote-minutes input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.2);
+}
+
+.quote-result {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  background: var(--bg-color);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.quote-cta {
+  text-align: center;
+}
+
 /* 서비스 상세 페이지 */
 .page-hero {
   background: var(--primary-color);

@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initScrollEffects();
     initFooterYear();
+    initQuoteCalc();
+    initQuotePrefill();
 });
 
 /* --- 푸터 연도 자동 갱신 --- */
@@ -197,6 +199,79 @@ function initScrollEffects() {
             header.style.background = 'rgba(30, 41, 59, 0.95)';
         }
     });
+}
+
+/* --- 간편 견적 계산기 --- */
+function initQuoteCalc() {
+    const calc = document.getElementById('quoteCalc');
+    if (!calc) return;
+
+    // 요금표 구간 (분 이내 / 만원 단위) — index.html 요금표와 동기화 유지
+    const BRACKETS = [
+        { max: 3, call: 2, field: 4 },
+        { max: 5, call: 4, field: 6 },
+        { max: 10, call: 6, field: 8 },
+        { max: 20, call: 10, field: 12 },
+        { max: 30, call: 12, field: 14 },
+        { max: 40, call: 14, field: 16 },
+        { max: 50, call: 16, field: 18 },
+        { max: 60, call: 18, field: 20 }
+    ];
+
+    const minutesEl = document.getElementById('recMinutes');
+    const resultEl = document.getElementById('quoteResult');
+    const ctaBtn = document.getElementById('quoteContactBtn');
+    // 같은 페이지에 문의 폼이 있으면 클릭 시 문의 내용 자동 입력, 없으면 쿼리로 전달
+    const messageEl = document.getElementById('message');
+
+    let currentSummary = '';
+
+    function update() {
+        const type = calc.querySelector('input[name="recType"]:checked').value;
+        const typeName = type === 'call' ? '통화 녹음' : '현장 녹음';
+        const mins = parseInt(minutesEl.value, 10);
+
+        if (!mins || mins < 1) {
+            resultEl.textContent = '녹음 길이를 분 단위로 입력해 주세요.';
+            currentSummary = '';
+            return;
+        }
+
+        const bracket = BRACKETS.find(b => mins <= b.max);
+
+        if (!bracket) {
+            resultEl.textContent = '60분을 초과하는 분량은 개별 견적으로 안내해 드립니다. 아래 버튼으로 문의해 주세요.';
+            currentSummary = '[간편 견적 계산기 문의]\n- 녹음 종류: ' + typeName + '\n- 녹음 길이: 약 ' + mins + '분 (60분 초과)\n정확한 견적을 부탁드립니다.';
+        } else {
+            const price = type === 'call' ? bracket.call : bracket.field;
+            resultEl.textContent = '예상 요금: ' + price + '만원 (부가세 별도 · ' + bracket.max + '분 이내 구간)';
+            currentSummary = '[간편 견적 계산기 문의]\n- 녹음 종류: ' + typeName + '\n- 녹음 길이: 약 ' + mins + '분\n- 예상 요금: ' + price + '만원 (부가세 별도)\n정확한 견적을 부탁드립니다.';
+        }
+
+        // 문의 폼이 다른 페이지에 있으면 쿼리 파라미터로 내용 전달
+        if (!messageEl && ctaBtn) {
+            ctaBtn.href = '../index.html?quote=' + encodeURIComponent(currentSummary) + '#contact';
+        }
+    }
+
+    calc.querySelectorAll('input[name="recType"]').forEach(r => r.addEventListener('change', update));
+    minutesEl.addEventListener('input', update);
+
+    if (messageEl && ctaBtn) {
+        ctaBtn.addEventListener('click', () => {
+            if (currentSummary && !messageEl.value.trim()) messageEl.value = currentSummary;
+        });
+    }
+
+    update();
+}
+
+/* --- 견적 계산기 쿼리 파라미터로 문의 내용 자동 입력 --- */
+function initQuotePrefill() {
+    const messageEl = document.getElementById('message');
+    if (!messageEl) return;
+    const quote = new URLSearchParams(location.search).get('quote');
+    if (quote && !messageEl.value.trim()) messageEl.value = quote;
 }
 
 /* --- EmailJS Logic --- */

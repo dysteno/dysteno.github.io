@@ -147,6 +147,26 @@
                 </p>
             </div>
 
+            <div class="quote-calc" id="quoteCalc">
+                <h3>간편 견적 계산기</h3>
+                <p class="quote-calc-desc">녹음 종류와 길이를 입력하면 예상 요금을 바로 확인할 수 있습니다.</p>
+                <div class="quote-calc-controls">
+                    <fieldset class="quote-type">
+                        <legend>녹음 종류</legend>
+                        <label><input type="radio" name="recType" value="call" checked> 통화 녹음</label>
+                        <label><input type="radio" name="recType" value="field"> 현장 녹음</label>
+                    </fieldset>
+                    <div class="quote-minutes">
+                        <label for="recMinutes">녹음 길이 (분)</label>
+                        <input type="number" id="recMinutes" min="1" max="600" step="1" value="10" inputmode="numeric">
+                    </div>
+                </div>
+                <p class="quote-result" role="status" aria-live="polite" id="quoteResult"></p>
+                <div class="quote-cta">
+                    <a href="../index.html#contact" class="btn-primary" id="quoteContactBtn">이 내용으로 견적 문의하기</a>
+                </div>
+            </div>
+
             <h2>진행 절차</h2>
             <p>
                 ① 전화·이메일·문의 폼으로 의뢰 → ② 분량 확인 후 견적과 예상 소요 기간 안내 →
