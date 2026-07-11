@@ -1,11 +1,13 @@
 /* CSS Variables */
 :root {
   --primary-color: #1e293b; /* Dark Slate / Navy */
+  --navy-deep: #0f172a; /* 히어로/푸터용 딥 네이비 */
   --secondary-color: #334155;
   --accent-color: #d4a373; /* Gold/Beige */
   --text-color: #333333;
   --text-light: #64748b;
-  --bg-color: #f8fafc;
+  --bg-color: #faf9f7; /* 웜 아이보리 */
+  --border-color: #e9e3d9; /* 웜 보더 */
   --white: #ffffff;
   --transition: all 0.3s ease;
   --header-height: 70px;
@@ -51,9 +53,18 @@ h1, h2, h3, h4 {
   line-height: 1.3;
 }
 
+.section-eyebrow {
+  text-align: center;
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.26em;
+  margin-bottom: 0.6rem;
+}
+
 .section-title {
-  font-size: 2.4rem;
-  letter-spacing: -0.02em;
+  font-size: 2.6rem;
+  letter-spacing: -0.03em;
   text-align: center;
   margin-bottom: 3rem;
   color: var(--primary-color);
@@ -63,10 +74,10 @@ h1, h2, h3, h4 {
 .section-title::after {
   content: '';
   display: block;
-  width: 60px;
-  height: 4px;
+  width: 44px;
+  height: 3px;
   background-color: var(--accent-color);
-  margin: 10px auto 0;
+  margin: 14px auto 0;
   border-radius: 2px;
 }
 
@@ -146,56 +157,72 @@ nav a:hover::after {
   padding: 0;
 }
 
-/* Hero Section */
+/* Hero Section — 타이포그래피 중심 딥네이비 */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
   color: var(--white);
   margin-bottom: 0;
-  padding: calc(var(--header-height) + 40px) 20px 60px;
-  background: url('../images/별걸다하는속기사무소-05.jpg') no-repeat center center/cover;
+  padding: calc(var(--header-height) + 60px) 5% 80px;
+  background:
+    radial-gradient(ellipse 900px 650px at 88% 12%, rgba(212, 163, 115, 0.16), transparent 62%),
+    linear-gradient(160deg, #0f172a 0%, #1e293b 55%, #0b1220 100%);
+  overflow: hidden;
 }
 
-/* 고정 배경(패럴랙스)은 마우스 환경 데스크톱에서만 — iOS/모바일 렌더링 문제 회피 */
-@media (min-width: 769px) and (hover: hover) and (pointer: fine) {
-  .hero {
-    background-attachment: fixed;
-  }
-}
-
-.hero-overlay {
+/* 거대 장식 인용부호 */
+.hero::before {
+  content: '\201D';
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -0.12em;
+  right: 3%;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 26rem;
+  line-height: 1;
+  color: rgba(212, 163, 115, 0.09);
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: center;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.6) 50%, rgba(15, 23, 42, 0.8) 100%);
-  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 20px;
+  text-align: left;
   animation: fadeInUp 1s ease-out;
 }
 
-.hero h1 {
-  font-size: 3.6rem;
-  letter-spacing: -0.03em;
+.hero-eyebrow {
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.22em;
   margin-bottom: 1.25rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero h1 {
+  font-size: 4.2rem;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
+  margin-bottom: 1.5rem;
 }
 
 /* 히어로 서비스 칩 */
 .hero-chips {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.5rem;
   margin-bottom: 1.25rem;
 }
@@ -227,7 +254,7 @@ nav a:hover::after {
 .hero-cta-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.9rem;
 }
 
@@ -267,26 +294,36 @@ nav a:hover::after {
   transform: translateY(-2px);
 }
 
-/* 히어로 신뢰 지표 */
+/* 히어로 신뢰 지표 — 글래스 카드 */
 .hero-stats {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem 3rem;
-  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  animation: fadeInUp 1s ease-out 0.15s both;
 }
 
 .hero-stat {
   text-align: center;
-  min-width: 110px;
+  padding: 1.75rem 1rem;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(212, 163, 115, 0.28);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  transition: var(--transition);
+}
+
+.hero-stat:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
 }
 
 .hero-stat strong {
   display: block;
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 700;
   color: var(--accent-color);
   line-height: 1.2;
+  margin-bottom: 0.3rem;
 }
 
 .hero-stat > span {
@@ -324,7 +361,7 @@ section {
 
 .about-image img {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 16px;
   box-shadow: var(--shadow-md);
   transition: transform 0.3s;
 }
@@ -349,10 +386,10 @@ section {
 .service-card {
   background-color: var(--bg-color);
   padding: 2.5rem;
-  border-radius: 12px;
+  border-radius: 16px;
   text-align: center;
   transition: var(--transition);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
 }
 
 .service-card:hover {
@@ -362,9 +399,16 @@ section {
 }
 
 .service-icon {
-  font-size: 2.5rem;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
   color: var(--accent-color);
-  margin-bottom: 1.5rem;
+  background: rgba(212, 163, 115, 0.14);
+  border-radius: 20px;
 }
 
 .service-card h3 {
@@ -393,7 +437,7 @@ section {
 
 .tab-btn {
   padding: 0.8rem 2rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   background-color: var(--white);
   color: var(--secondary-color);
   border-radius: 50px;
@@ -415,7 +459,7 @@ section {
 .tab-content {
   background-color: var(--white);
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: 16px;
   min-height: 200px;
   box-shadow: var(--shadow-sm);
   display: none;
@@ -434,7 +478,7 @@ section {
 
 .history-list li {
   background: var(--bg-color);
-  border: 1px solid #e8edf4;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 0.9rem 1rem 0.9rem 2.7rem;
   position: relative;
@@ -497,8 +541,8 @@ section {
   text-align: center;
   padding: 1.5rem 1rem;
   background: var(--bg-color);
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
   transition: var(--transition);
 }
 
@@ -537,7 +581,7 @@ section {
   text-align: center;
   padding: 1.25rem 1.5rem;
   background: rgba(212, 163, 115, 0.12);
-  border-radius: 12px;
+  border-radius: 16px;
   max-width: 640px;
   margin: 0 auto;
 }
@@ -576,7 +620,7 @@ section {
   min-width: 300px;
   background: var(--white);
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: 16px;
   box-shadow: var(--shadow-sm);
 }
 
@@ -595,8 +639,8 @@ section {
 .input-group textarea {
   width: 100%;
   padding: 0.8rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
+  border: 1px solid #d9d1c5;
+  border-radius: 8px;
   font-family: inherit;
   transition: var(--transition);
 }
@@ -626,7 +670,7 @@ section {
 
 /* Footer */
 footer {
-  background-color: var(--primary-color);
+  background-color: var(--navy-deep);
   border-top: 3px solid var(--accent-color);
   color: #94a3b8;
   padding: 3rem 5%;
@@ -702,7 +746,7 @@ footer {
 
 .popups-overlay .popup-card {
   background: var(--white);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   width: 420px;
   min-width: 420px;
@@ -742,7 +786,7 @@ footer {
 
 .modal-content {
   background: var(--white);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   max-width: 450px;
   width: 90%;
@@ -762,7 +806,7 @@ footer {
 
 .modal-footer {
   display: flex;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--border-color);
 }
 
 .modal-btn {
@@ -777,11 +821,11 @@ footer {
 }
 
 .modal-btn:hover {
-  background: #f1f5f9;
+  background: #f5f1ea;
 }
 
 .modal-btn.close-day {
-  border-right: 1px solid #e2e8f0;
+  border-right: 1px solid var(--border-color);
 }
 
 /* Response Animations */
@@ -799,6 +843,27 @@ footer {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* 태블릿: 히어로 1열 전환 */
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-chips,
+  .hero-cta-row {
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
 }
 
 /* Mobile Responsive */
@@ -836,7 +901,16 @@ footer {
   }
 
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.3rem;
+  }
+
+  .hero::before {
+    font-size: 13rem;
+    right: -6%;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.8rem;
   }
 
   .hero-chips {
@@ -853,12 +927,11 @@ footer {
   }
 
   .hero-stats {
-    gap: 1.25rem 2rem;
-    margin-top: 2.25rem;
+    gap: 0.75rem;
   }
 
   .hero-stat {
-    min-width: 90px;
+    padding: 1.1rem 0.75rem;
   }
 
   .hero-stat strong {
@@ -1000,7 +1073,7 @@ footer a:hover {
   width: 100%;
   border-collapse: collapse;
   background: var(--white);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
@@ -1015,7 +1088,7 @@ footer a:hover {
 .pricing-table td {
   padding: 0.9rem 1rem;
   text-align: center;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f2ede4;
   color: var(--secondary-color);
 }
 
@@ -1024,7 +1097,7 @@ footer a:hover {
 }
 
 .pricing-table tbody tr:nth-child(even) {
-  background: #fafbfe;
+  background: #fbf9f5;
 }
 
 .pricing-table tbody tr:hover {
@@ -1055,8 +1128,8 @@ footer a:hover {
 
 .faq-item {
   background: var(--bg-color);
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
   margin-bottom: 1rem;
   overflow: hidden;
 }
@@ -1131,8 +1204,8 @@ footer a:hover {
   max-width: 700px;
   margin: 3rem auto 0;
   background: var(--white);
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
   padding: 2rem;
   box-shadow: var(--shadow-sm);
 }
@@ -1190,8 +1263,8 @@ footer a:hover {
 .quote-minutes input {
   width: 130px;
   padding: 0.6rem 0.8rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
+  border: 1px solid #d9d1c5;
+  border-radius: 8px;
   font-family: inherit;
   font-size: 1rem;
 }
@@ -1218,7 +1291,9 @@ footer a:hover {
 
 /* 서비스 상세 페이지 */
 .page-hero {
-  background: var(--primary-color);
+  background:
+    radial-gradient(ellipse 800px 500px at 88% 0%, rgba(212, 163, 115, 0.15), transparent 60%),
+    linear-gradient(160deg, #0f172a 0%, #1e293b 70%, #0b1220 100%);
   color: var(--white);
   padding: calc(var(--header-height) + 60px) 5% 60px;
   text-align: center;
@@ -1256,7 +1331,9 @@ footer a:hover {
 }
 
 .cta-band {
-  background: var(--primary-color);
+  background:
+    radial-gradient(ellipse 700px 400px at 85% 0%, rgba(212, 163, 115, 0.14), transparent 60%),
+    var(--navy-deep);
   text-align: center;
   padding: 3.5rem 5%;
 }
@@ -1281,7 +1358,7 @@ footer a:hover {
 
 .other-services a {
   padding: 0.6rem 1.4rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   border-radius: 50px;
   background: var(--white);
   color: var(--secondary-color);
