@@ -88,7 +88,7 @@ header {
   left: 0;
   width: 100%;
   height: var(--header-height);
-  background-color: rgba(30, 41, 59, 0.95);
+  background-color: rgba(15, 23, 42, 0.92);
   backdrop-filter: blur(10px);
   z-index: 1000;
   display: flex;
@@ -393,7 +393,7 @@ section {
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-md);
   border-color: var(--accent-color);
 }
@@ -421,7 +421,57 @@ section {
   color: var(--text-light);
 }
 
-/* History Section */
+/* History Section — 다크 섹션 (히어로와 리듬 연결) */
+#history {
+  background:
+    radial-gradient(ellipse 900px 600px at 10% 100%, rgba(212, 163, 115, 0.10), transparent 62%),
+    linear-gradient(160deg, #0f172a 0%, #1e293b 60%, #0b1220 100%);
+}
+
+#history .section-title {
+  color: var(--white);
+}
+
+#history .tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #cbd5e1;
+}
+
+#history .tab-btn.active,
+#history .tab-btn:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+#history .tab-btn.active {
+  box-shadow: 0 8px 20px -8px rgba(212, 163, 115, 0.5);
+}
+
+#history .tab-content {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+#history .history-list li {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(212, 163, 115, 0.25);
+  color: #cbd5e1;
+  backdrop-filter: blur(4px);
+}
+
+#history .history-list li:hover {
+  border-color: var(--accent-color);
+  box-shadow: none;
+  transform: translateY(-2px);
+}
+
+#history .history-list li strong {
+  color: var(--accent-color);
+}
+
 .history {
   max-width: 1000px;
   margin: 0 auto;
@@ -881,7 +931,7 @@ footer {
     top: var(--header-height);
     left: 0;
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--navy-deep);
     flex-direction: column;
     padding: 2rem;
     gap: 1.5rem;

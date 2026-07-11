@@ -189,10 +189,10 @@ function initScrollEffects() {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.1)';
-            header.style.background = 'rgba(30, 41, 59, 1)'; // Solid color on scroll
+            header.style.background = 'rgba(15, 23, 42, 1)'; // Solid color on scroll
         } else {
             header.style.boxShadow = 'none';
-            header.style.background = 'rgba(30, 41, 59, 0.95)';
+            header.style.background = 'rgba(15, 23, 42, 0.92)';
         }
     });
 }
