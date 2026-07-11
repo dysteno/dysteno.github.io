@@ -21,7 +21,37 @@ document.addEventListener('DOMContentLoaded', () => {
     initCareerYears();
     initQuoteCalc();
     initQuotePrefill();
+    initScrollReveal();
 });
+
+/* --- 스크롤 등장 애니메이션 (IntersectionObserver, 미지원 시 항상 표시) --- */
+function initScrollReveal() {
+    if (!('IntersectionObserver' in window)) return;
+
+    const targets = document.querySelectorAll(
+        '.service-card, .process-step, .history-list li, .faq-item, .quote-calc, ' +
+        '.about-container, .contact-container, .pricing-table-wrap, .process-trust'
+    );
+    if (targets.length === 0) return;
+
+    document.documentElement.classList.add('js');
+
+    targets.forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i % 5) * 70 + 'ms';
+    });
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    targets.forEach(el => io.observe(el));
+}
 
 /* --- 방송 자막 경력 연차 자동 갱신 (2017년 시작 기준: 2026년=9년, 매년 1월 1일 +1) --- */
 function initCareerYears() {
