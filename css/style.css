@@ -346,7 +346,7 @@ section {
 }
 
 .about-text {
-  flex: 1;
+  flex: 1.25;
 }
 
 .about-text p {
@@ -356,18 +356,42 @@ section {
 }
 
 .about-image {
-  flex: 1;
+  flex: 0.85;
+}
+
+/* 증빙 서류 액자 프레임 */
+.about-image a {
+  display: block;
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.about-image a:hover {
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
 }
 
 .about-image img {
   width: 100%;
-  border-radius: 16px;
-  box-shadow: var(--shadow-md);
-  transition: transform 0.3s;
+  height: auto;
+  border-radius: 8px;
+  display: block;
 }
 
-.about-image img:hover {
-  transform: scale(1.02);
+.about-caption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 0.85rem;
+}
+
+.about-caption span {
+  color: #b0a89c;
 }
 
 /* Services Section */
@@ -948,6 +972,12 @@ footer {
   .about-container {
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .about-image {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
   }
 
   .hero h1 {
