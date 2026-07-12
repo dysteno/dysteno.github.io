@@ -110,24 +110,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    <!-- ▼ 방문자 분석 도구 (ID 발급 후 주석 해제)
-      [1] Google Analytics 4: https://analytics.google.com 에서 속성 생성 후
-          측정 ID(G-XXXXXXXXXX)를 발급받아 아래 두 곳의 ID를 교체하고 주석을 해제하세요.
+    <!-- ▼ Google Analytics 4 (측정 ID 발급 후 아래 G-XXXXXXXXXX 두 곳 교체하고 주석 해제)
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXXXXX');
-      </script>
-
-      [2] 네이버 애널리틱스: https://analytics.naver.com 에서 사이트 등록 후
-          발급받은 ID로 아래를 교체하고 주석을 해제하세요.
-      <script src="https://wcs.naver.net/wcslog.js"></script>
-      <script>
-        if (!window.wcs_add) window.wcs_add = {};
-        window.wcs_add["wa"] = "여기에_발급_ID";
-        if (window.wcs) { wcs_do(); }
       </script>
     -->
 </head>
@@ -558,6 +547,13 @@
     </div>
 
     <script src="./js/main.js" defer></script>
+    <!-- 네이버 애널리틱스 -->
+    <script src="https://wcs.naver.net/wcslog.js"></script>
+    <script>
+        if (!window.wcs_add) window.wcs_add = {};
+        window.wcs_add["wa"] = "19c441f7743dbe0";
+        if (window.wcs) { wcs_do(); }
+    </script>
 </body>
 
 </html>
