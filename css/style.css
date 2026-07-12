@@ -32,6 +32,9 @@ body {
   line-height: 1.6;
   background-color: var(--bg-color);
   overflow-x: hidden;
+  /* 한국어 단어 단위 줄바꿈 (단어 중간 끊김 방지) */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 ul {
