@@ -607,8 +607,8 @@ section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
-  max-width: 1000px;
+  gap: 1.25rem;
+  max-width: 1140px;
   margin: 0 auto 2.5rem;
 }
 
